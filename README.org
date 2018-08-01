@@ -213,6 +213,13 @@ SET    ContactName = 'Juan'
 WHERE  Country     = 'Mexico';
 #+END_SRC
 
+* Delete
+DELETE syntax
+#+BEGIN_SRC sql
+DELETE FROM table_name
+WHERE condition;
+#+END_SRC
+
 Sql Delete Example
 #+BEGIN_SRC sql
 DELETE FROM Customers
