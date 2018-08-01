@@ -279,3 +279,39 @@ MAX() Example
 SELECT MAX(Price) AS LargestPrice
 FROM   Products;
 #+END_SRC
+* COUNT(), AVG(), and SUM()
+Syntax
+
+#+BEGIN_SRC sql
+SELECT COUNT(<column_name>)
+FROM   <table_name>
+WHERE  <condition>
+#+END_SRC
+#+BEGIN_SRC sql
+SELECT AVG(<column_name>)
+FROM   <table_name>
+WHERE  <condition>
+#+END_SRC
+#+BEGIN_SRC sql
+SELECT SUM(<column_name>)
+FROM   <table_name>
+WHERE  <condition>
+#+END_SRC
+
+Count() Example
+#+BEGIN_SRC sql
+SELECT COUNT(ProductID)
+FROM Products;
+#+END_SRC
+
+AVG() Example
+#+BEGIN_SRC sql
+SELECT AVG(Price)
+FROM Products;
+#+END_SRC
+
+SUM() Example
+#+BEGIN_SRC sql
+SELECT SUM(Quantity)
+FROM OrderDetails;
+#+END_SRC
