@@ -39,14 +39,71 @@ WHERE CustomerID=1
 
 Operators
 
-| Operator    | 	Description                                                         |
-|-------------+-----------------------------------------------------------------------------|
-| =	   | Equal                                                                       |
-| <>	  | Not equal. Note: In some versions of SQL this operator may be written as != |
-| >	   | Greater than                                                                |
-| <	   | Less than                                                                   |
-| >=	  | Greater than or equal                                                       |
-| <=	  | Less than or equal                                                          |
-| BETWEEN     | 	Between an inclusive range                                          |
-| LIKE        | 	Search for a pattern                                                |
-| IN	  | To specify multiple possible values for a column                            |
+| Operator | Description                                                                 |
+|----------+-----------------------------------------------------------------------------|
+| =        | Equal                                                                       |
+| <>       | Not equal. Note: In some versions of SQL this operator may be written as != |
+| >        | Greater than                                                                |
+| <        | Less than                                                                   |
+| >=       | Greater than or equal                                                       |
+| <=       | Less than or equal                                                          |
+| BETWEEN  | Between an inclusive range                                                  |
+| LIKE     | Search for a pattern                                                        |
+| IN       | To specify multiple possible values for a column                            |
+
+* AND, NOT, OR
+
+AND Syntax
+#+BEGIN_SRC sql
+SELECT <column1>, <column2>, <column3>
+FROM <table_name>,
+WHERE condition1 
+AND   condition2
+AND   condition3;
+#+END_SRC
+
+OR Syntax
+#+BEGIN_SRC sql
+SELECT <column1>, <column2>, <column3>
+FROM <table_name>,
+WHERE condition1 
+OR    condition2
+OR    condition3;
+#+END_SRC
+
+NOT Syntax
+#+BEGIN_SRC sql
+SELECT <column1>, <column2>, <column3>
+FROM <table_name>,
+WHERE NOT condition1;
+#+END_SRC
+
+AND Example
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE Country='Germany' AND City='Berlin';
+#+END_SRC
+
+OR Example
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE City='Berlin' OR City='München';
+#+END_SRC
+
+NOT Example
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE NOT Country='Germany';
+#+END_SRC
+
+Combining AND, OR and NOT
+
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE Country='Germany' AND (City='Berlin' OR City='München');
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE NOT Country='GERMANY' AND NOT Country='USA';
+#+END_SRC
