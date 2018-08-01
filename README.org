@@ -232,3 +232,22 @@ DELETE FROM <table_name>;
 # or
 DELETE * FROM <table_name>;
 #+END_SRC
+* TOP, LIMIT, ROWNUM
+*TOP* => number of records to return.
+#+BEGIN_SRC sql
+SELECT <column_name(s)>
+FROM   <table_name(s)>
+WHERE  condition
+LIMIT  number;
+#+END_SRC
+
+Examples
+#+BEGIN_SRC sql
+SELECT TOP 3 * FROM Customers;
+# or
+SELECT * FROM Customers
+LIMIT 3;
+# or 
+SELECT * FROM Customers
+WHERE ROWNUM <=3 ;
+#+END_SRC
