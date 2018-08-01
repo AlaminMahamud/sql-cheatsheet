@@ -526,3 +526,12 @@ FULL OUTER JOIN <table_B>
           WHERE <table_A>.id IS NULL
 	     OR <table_B>.id IS NULL
 #+END_SRC
+
+sql self join
+#+BEGIN_SRC sql
+SELECT A.CustomerName as c1, B.CustomerName as c2, A.City
+FROM   <table_A> AS A , <table_B> as B
+WHERE  A.id <> B.id
+AND    A.City = B.City
+ORDER BY A.City
+#+END_SRC
