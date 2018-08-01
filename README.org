@@ -501,7 +501,7 @@ RIGHT JOIN <table_B>
     WHERE <table_A>.id IS NULL;
 #+END_SRC
 
-INNER JOIN =A∩B=
+inner join =A∩B=
 #+BEGIN_SRC sql
 SELECT     <select_list>
 FROM       <table_A>
@@ -509,7 +509,7 @@ INNER JOIN <table_B>
         ON <table_A>.id = <table_B>.id
 #+END_SRC
 
-FULL OUTER JOIN =AUB=
+full outer join =AUB=
 #+BEGIN_SRC sql
 SELECT          <select_list>
 FROM            <table_A>
@@ -517,7 +517,7 @@ FULL OUTER JOIN <table_B>
              ON <table_A>.id = <table_B>.id
 #+END_SRC
 
-FULL OUTER JOIN EXCLUSIVE =(AUB)'=
+full outer join exclusive  =(AUB)'=
 #+BEGIN_SRC sql
 SELECT          <select_list>
 FROM            <table_A>   
