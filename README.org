@@ -213,4 +213,15 @@ SET    ContactName = 'Juan'
 WHERE  Country     = 'Mexico';
 #+END_SRC
 
+Sql Delete Example
+#+BEGIN_SRC sql
+DELETE FROM Customers
+WHERE CustomerName='Alfreds Futterkiste';
+#+END_SRC
 
+Delete All Records - data will be deleted but table structures, attributes and indexes will be intact.
+#+BEGIN_SRC sql
+DELETE FROM <table_name>;
+# or
+DELETE * FROM <table_name>;
+#+END_SRC
