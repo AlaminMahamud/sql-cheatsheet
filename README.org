@@ -392,3 +392,42 @@ WHERE Country NOT IN ('Germany', 'France', 'UK');
 SELECT * FROM Customers
 WHERE Country IN (SELECT Country FROM Suppliers);
 #+END_SRC
+
+* BETWEEN
+
+#+BEGIN_SRC sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name BETWEEN value1 AND value2;
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT * FROM Products
+WHERE Price BETWEEN 10 AND 20;
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT * FROM Products
+WHERE Price NOT BETWEEN 10 AND 20;
+#+END_SRC
+
+Between with IN example
+#+BEGIN_SRC sql
+SELECT * FROM Products
+WHERE (Price BETWEEN 10 AND 20)
+AND NOT CatergoryID IN (1,2,3);
+#+END_SRC
+
+Between text values example
+#+BEGIN_SRC sql
+SELECT * FROM Products
+WHERE ProductName NOT BETWEEN 'Carnarvon Tigers' AND 'Mozzarella di Giovanni'
+ORDER BY ProductName;
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT *
+FROM `objects`
+WHERE (date_field BETWEEN '2010-01-30 14:15:55' AND '2010-09-29 10:15:55')
+#+END_SRC
+
