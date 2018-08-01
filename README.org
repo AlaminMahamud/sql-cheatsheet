@@ -25,3 +25,28 @@ SELECT <column1>, <column2>, ..., <columnN>
 FROM   <table>
 WHERE  <condition>
 #+END_SRC
+
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE Country='Mexico';
+#+END_SRC
+
+Text Field should be in '', numeric field should not.
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE CustomerID=1
+#+END_SRC
+
+Operators
+
+| Operator    | 	Description                                                         |
+|-------------+-----------------------------------------------------------------------------|
+| \=	  | Equal                                                                       |
+| \<>	 | Not equal. Note: In some versions of SQL this operator may be written as != |
+| >	   | Greater than                                                                |
+| <	   | Less than                                                                   |
+| >=	  | Greater than or equal                                                       |
+| <=	  | Less than or equal                                                          |
+| BETWEEN     | 	Between an inclusive range                                          |
+| LIKE        | 	Search for a pattern                                                |
+| IN	  | To specify multiple possible values for a column                            |
