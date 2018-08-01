@@ -187,3 +187,30 @@ The =IS NOT NULL= Operator
 SELECT LastName, FirstName, Address FROM Persons
 WHERE Address IS NOT NULL;
 #+END_SRC
+
+* Update
+
+Syntax
+#+BEGIN_SRC sql
+UPDATE <table_name>
+SET <column1> = value1, <column2> = value2, ...
+WHERE <condition>;
+#+END_SRC
+
+Example
+
+#+BEGIN_SRC sql
+UPDATE Customers
+SET    ContactName = 'Alfred Schimdt',
+       City        = 'Frankfurt'
+WHERE  CustomerID  = 1;
+#+END_SRC
+
+Update Mulitple Records
+#+BEGIN_SRC sql
+UPDATE Customers
+SET    ContactName = 'Juan'
+WHERE  Country     = 'Mexico';
+#+END_SRC
+
+
