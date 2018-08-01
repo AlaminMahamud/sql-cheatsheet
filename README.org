@@ -10,3 +10,12 @@ SELECT DISTINCT Country FROM Customers;
 SELECT COUNT(DISTINCT Country)
 FROM Customers;
 #+END_SRC
+
+#+BEGIN_SRC sql
+SELECT COUNT(*) AS DistinctCountries
+FROM (
+		SELECT DISTINCT Country
+        FROM Customers
+	 );
+#+END_SRC 
+
