@@ -552,7 +552,7 @@ UNION ALL
 SELECT column_name(s) FROM table2;
 #+END_SRC
 
-sql union with here
+sql =union= exmaple:
 #+BEGIN_SRC sql
 SELECT City, Country FROM Customers
 WHERE Country='Germany'
@@ -562,7 +562,7 @@ WHERE Country='Germany'
 ORDER BY City;
 #+END_SRC
 
-sql union all with here
+sql =union all= with example:
 #+BEGIN_SRC sql
 SELECT City, Country FROM Customers
 WHERE Country='Germany'
