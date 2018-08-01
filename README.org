@@ -251,3 +251,31 @@ LIMIT 3;
 SELECT * FROM Customers
 WHERE ROWNUM <=3 ;
 #+END_SRC
+
+* MIN() or MAX()
+
+MIN() Syntax
+#+BEGIN_SRC sql
+SELECT MIN(<column_name>)
+FROM   <table_name>
+WHERE  <condition>;
+#+END_SRC
+
+MAX() Syntax
+#+BEGIN_SRC sql
+SELECT MAX(<column_name>)
+FROM   <table_name>
+WHERE  <condition>;
+#+END_SRC
+
+MIN() Example
+#+BEGIN_SRC sql
+SELECT MIN(Price) AS SmallestPrice
+FROM   Products;
+#+END_SRC
+
+MAX() Example
+#+BEGIN_SRC sql
+SELECT MAX(Price) AS LargestPrice
+FROM   Products;
+#+END_SRC
