@@ -281,7 +281,6 @@ FROM   Products;
 #+END_SRC
 * COUNT(), AVG(), and SUM()
 Syntax
-
 #+BEGIN_SRC sql
 SELECT COUNT(<column_name>)
 FROM   <table_name>
@@ -314,4 +313,51 @@ SUM() Example
 #+BEGIN_SRC sql
 SELECT SUM(Quantity)
 FROM OrderDetails;
+#+END_SRC
+
+* LIKE
+
+Syntax
+#+BEGIN_SRC sql
+# _ represents a single character
+# % represents 0|1|1+ character
+SELECT <column1>, <column2>, <column3>
+FROM   <table_name>
+WHERE  <columnN> LIKE <pattern>;
+#+END_SRC
+
+Examples
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE CustomerName LIKE 'a%';
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE CustomerName LIKE '%a';
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE CustomerName LIKE '%or%';
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE CustomerName LIKE '_r%';
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE CustomerName LIKE 'a_%_%';
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE ContactName LIKE 'a%o';
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE CustomerName NOT LIKE 'a%';
 #+END_SRC
