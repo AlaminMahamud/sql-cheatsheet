@@ -107,3 +107,32 @@ WHERE Country='Germany' AND (City='Berlin' OR City='München');
 SELECT * FROM Customers
 WHERE NOT Country='GERMANY' AND NOT Country='USA';
 #+END_SRC
+
+* ORDER BY Keyword
+
+#+BEGIN_SRC sql
+SELECT <column1>, <column2>, ..
+FROM   <table_name>
+ORDER BY <column1>, <column2>, ... ASC|DESC
+#+END_SRC
+
+Example
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+ORDER BY Country;
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+ORDER BY Country DESC;
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+ORDER BY Country, CustomerName;
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT Country, CustomerID FROM Customers
+ORDER BY Country ASC, CustomerID DESC ;
+#+END_SRC
