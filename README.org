@@ -136,3 +136,23 @@ ORDER BY Country, CustomerName;
 SELECT Country, CustomerID FROM Customers
 ORDER BY Country ASC, CustomerID DESC ;
 #+END_SRC
+
+* INSERT INTO
+
+Syntax
+#+BEGIN_SRC sql
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+#+END_SRC
+
+Example
+#+BEGIN_SRC sql
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+#+END_SRC
+
+#+BEGIN_SRC sql
+INSERT INTO Customers (CustomerName, City, Country)
+VALUES ('Cardinal', 'Stavanger', 'Norway');
+#+END_SRC
+
