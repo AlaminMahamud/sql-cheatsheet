@@ -4,3 +4,9 @@
 #+BEGIN_SRC sql
 SELECT DISTINCT Country FROM Customers;
 #+END_SRC
+
+
+#+BEGIN_SRC sql
+SELECT COUNT(DISTINCT Country)
+FROM Customers;
+#+END_SRC
