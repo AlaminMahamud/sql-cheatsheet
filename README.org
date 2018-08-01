@@ -156,3 +156,34 @@ INSERT INTO Customers (CustomerName, City, Country)
 VALUES ('Cardinal', 'Stavanger', 'Norway');
 #+END_SRC
 
+* NULL Value
+#+BEGIN_QUOTE
+A field with a =NULL= means a field with =no-value=
+If a field in a table is optional, it is possible to insert a new record or update a record without adding a value to this field. Then, the field will be saved with a NULL value.
+#+END_QUOTE
+
+test for null values?
+#+BEGIN_SRC sql
+SELECT <column_names>
+FROM   <table_names>
+WHERE <column_name> IS NULL;
+#+END_SRC
+
+
+#+BEGIN_SRC sql
+SELECT <column_names>
+FROM   <table_names>
+WHERE <column_name> IS NOT NULL;
+#+END_SRC
+
+Examples
+#+BEGIN_SRC sql
+SELECT LastName, FirstName, Address FROM Persons
+WHERE  Address   IS NULL
+#+END_SRC
+
+The =IS NOT NULL= Operator
+#+BEGIN_SRC sql
+SELECT LastName, FirstName, Address FROM Persons
+WHERE Address IS NOT NULL;
+#+END_SRC
