@@ -361,3 +361,34 @@ WHERE ContactName LIKE 'a%o';
 SELECT * FROM Customers
 WHERE CustomerName NOT LIKE 'a%';
 #+END_SRC
+
+* IN
+
+Syntax
+#+BEGIN_SRC sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (value1, value2, ...);
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (SELECT STATEMENT);
+#+END_SRC
+
+Examples
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE Country IN ('Germany', 'France', 'UK');
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE Country NOT IN ('Germany', 'France', 'UK');
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT * FROM Customers
+WHERE Country IN (SELECT Country FROM Suppliers);
+#+END_SRC
