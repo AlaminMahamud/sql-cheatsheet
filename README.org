@@ -19,3 +19,9 @@ FROM (
      );
 #+END_SRC 
 
+* WHERE
+#+BEGIN_SRC sql
+SELECT <column1>, <column2>, ..., <columnN>
+FROM   <table>
+WHERE  <condition>
+#+END_SRC
