@@ -1,0 +1,6 @@
+#+TITLE: SQL Cheat Sheet
+
+* Distinct
+#+BEGIN_SRC sql
+SELECT DISTINCT Country FROM Customers;
+#+END_SRC
