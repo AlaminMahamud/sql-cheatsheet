@@ -14,8 +14,8 @@ FROM Customers;
 #+BEGIN_SRC sql
 SELECT COUNT(*) AS DistinctCountries
 FROM (
-		SELECT DISTINCT Country
+        SELECT DISTINCT Country
         FROM Customers
-	 );
+     );
 #+END_SRC 
 
