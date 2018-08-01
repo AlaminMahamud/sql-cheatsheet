@@ -457,6 +457,7 @@ SELECT CustomerName, CONCAT(Address,', ',PostalCode,', ',City,', ',Country) AS A
 FROM Customers;
 #+END_SRC
 
+table alias
 #+BEGIN_SRC sql
 SELECT o.OrderID, o.OrderDate, c.CustomerName
 FROM Customers AS c, Orders AS o
@@ -465,3 +466,63 @@ WHERE c.CustomerName="Around the Horn" AND c.CustomerID=o.CustomerID;
 
 * JOIN
 [[https://i.stack.imgur.com/1UKp7.png]]
+
+left join =A U (A∩B)=
+#+BEGIN_SRC sql
+SELECT    <select_list>
+FROM      <table_A>
+LEFT JOIN <table_B> 
+          ON <table_A>.id = <table_B>.id
+#+END_SRC
+
+left join without common data =A ∩ (A∩B)=
+#+BEGIN_SRC sql
+SELECT    <select_list>
+FROM      <table_A>
+LEFT JOIN <table_B>
+       ON <table_A>.id = <table_B>.id
+    WHERE <table_B>.id IS NULL;
+#+END_SRC
+
+right join =B U (A∩B)=
+#+BEGIN_SRC sql
+SELECT    <select_list>
+FROM      <table_A>
+RIGHT JOIN <table_B> 
+          ON <table_A>.id = <table_B>.id
+#+END_SRC
+
+right join without common data =B ∩ (A∩B)=
+#+BEGIN_SRC sql
+SELECT    <select_list>
+FROM      <table_A>
+RIGHT JOIN <table_B>
+       ON <table_A>.id = <table_B>.id
+    WHERE <table_A>.id IS NULL;
+#+END_SRC
+
+INNER JOIN =A∩B=
+#+BEGIN_SRC sql
+SELECT     <select_list>
+FROM       <table_A>
+INNER JOIN <table_B>
+        ON <table_A>.id = <table_B>.id
+#+END_SRC
+
+FULL OUTER JOIN =AUB=
+#+BEGIN_SRC sql
+SELECT          <select_list>
+FROM            <table_A>
+FULL OUTER JOIN <table_B>
+             ON <table_A>.id = <table_B>.id
+#+END_SRC
+
+FULL OUTER JOIN EXCLUSIVE =(AUB)'=
+#+BEGIN_SRC sql
+SELECT          <select_list>
+FROM            <table_A>   
+FULL OUTER JOIN <table_B>
+             ON <table_A>.id = <table_B>.id
+          WHERE <table_A>.id IS NULL
+	     OR <table_B>.id IS NULL
+#+END_SRC
