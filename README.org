@@ -517,7 +517,7 @@ FULL OUTER JOIN <table_B>
              ON <table_A>.id = <table_B>.id
 #+END_SRC
 
-full outer join exclusive  =(AUB)'=
+full outer join exclusive  =U\(AUB)=
 #+BEGIN_SRC sql
 SELECT          <select_list>
 FROM            <table_A>   
