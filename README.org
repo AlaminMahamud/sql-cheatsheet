@@ -431,3 +431,34 @@ FROM `objects`
 WHERE (date_field BETWEEN '2010-01-30 14:15:55' AND '2010-09-29 10:15:55')
 #+END_SRC
 
+* Alias
+#+BEGIN_SRC sql
+SELECT column_name AS alias_name
+FROM table_name;
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT column_name(s)
+FROM table_name AS alias_name;
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT CustomerID as ID, CustomerName AS Customer
+FROM Customers;
+# OR
+# It requires double quotation marks or square brackets if the alias name contains spaces:
+SELECT CustomerName AS Customer, ContactName AS [Contact Person]
+FROM Customers;
+#+END_SRC
+
+The following SQL statement creates an alias named "Address" that combine four columns (Address, PostalCode, City and Country):
+#+BEGIN_SRC sql
+SELECT CustomerName, CONCAT(Address,', ',PostalCode,', ',City,', ',Country) AS Address
+FROM Customers;
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT o.OrderID, o.OrderDate, c.CustomerName
+FROM Customers AS c, Orders AS o
+WHERE c.CustomerName="Around the Horn" AND c.CustomerID=o.CustomerID;
+#+END_SRC
