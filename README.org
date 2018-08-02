@@ -536,6 +536,9 @@ AND    A.City = B.City
 ORDER BY A.City
 #+END_SRC
 
+at the time of join the structure becomes like this ? Need verification
+[[./images/after join table structure.png]]
+
 * Union
 #+BEGIN_QUOTE
 The UNION operator is used to combine the result-set of two or more SELECT statements.
