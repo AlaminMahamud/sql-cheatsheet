@@ -579,3 +579,31 @@ UNION
 SELECT 'Supplier', ContactName, City, Country
 FROM Suppliers;
 #+END_SRC
+* GROUP BY
+Syntax
+#+BEGIN_SRC sql
+SELECT   <column_name(s)>
+FROM     <table_name>
+GROUP BY <column_name(s)>
+ORDER BY <column_name(s)>
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country;
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+ORDER BY COUNT(CustomerID) DESC;
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT Shippers.ShipperName, COUNT(Orders.OrderID) AS NumberOfOrders FROM Orders
+LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID
+GROUP BY ShipperName;
+#+END_SRC
+
