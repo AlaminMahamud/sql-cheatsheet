@@ -698,3 +698,196 @@ WHERE EXISTS (
 	      AND    Price=22
              );
 #+END_SRC
+* ANY, ALL
+
+ANY Syntax
+#+BEGIN_SRC sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ANY
+(SELECT column_name FROM table_name WHERE condition);
+#+END_SRC
+
+ALL Syntax
+#+BEGIN_SRC sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ALL
+(SELECT column_name FROM table_name WHERE condition);
+#+END_SRC
+
+Examples
+#+BEGIN_SRC sql
+  SELECT  ProductName
+  FROM    Products
+  WHERE   ProductID = ANY (
+			   SELECT ProductID
+			   FROM   OrderDetails
+			   WHERE  Quantity = 10
+			  );
+#+END_SRC
+
+#+BEGIN_SRC sql
+
+  SELECT ProductName
+  FROM 	 Products
+  WHERE  ProductID = ALL (
+			   SELECT	ProductID
+			   FROM 	OrderDetails
+			   WHERE 	Quantity = 10
+			  );
+#+END_SRC
+
+
+* SELECT INTO
+
+Syntax
+#+BEGIN_SRC sql
+SELECT *
+INTO newtable [IN externaldb]
+FROM oldtable
+WHERE condition;
+#+END_SRC
+
+Examples
+#+BEGIN_SRC sql
+SELECT * INTO CustomersBackup2017 IN 'Backup.mdb'
+FROM Customers;
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT CustomerName, ContactName INTO CustomersBackup2017
+FROM Customers;
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT * INTO CustomersGermany
+FROM Customers
+WHERE Country = 'Germany';
+#+END_SRC
+
+*Tip*: SELECT INTO can also be used to create a new, empty table using the schema of another. Just add a WHERE clause that causes the query to return no data:
+#+BEGIN_SRC sql
+SELECT * INTO newtable
+FROM oldtable
+WHERE 1 = 0;
+#+END_SRC
+
+
+* INSERT INTO
+#+BEGIN_QUOTE
+The INSERT INTO SELECT statement copies data from one table and inserts it into another table.
+
+- INSERT INTO SELECT requires that data types in source and target tables match
+- The existing records in the target table are unaffected
+#+END_QUOTE
+
+Sytnax
+#+BEGIN_SRC sql
+INSERT INTO table2
+SELECT * FROM table1
+WHERE condition;
+#+END_SRC
+
+#+BEGIN_SRC sql
+INSERT INTO table2 (column1, column2, column3, ...)
+SELECT column1, column2, column3, ...
+FROM table1
+WHERE condition;
+#+END_SRC
+
+#+BEGIN_SRC sql
+INSERT INTO Customers (CustomerName, City, Country)
+SELECT SupplierName, City, Country FROM Suppliers;
+#+END_SRC
+
+#+BEGIN_SRC sql
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+SELECT SupplierName, ContactName, Address, City, PostalCode, Country FROM Suppliers;
+#+END_SRC
+
+#+BEGIN_SRC sql
+INSERT INTO Customers (CustomerName, City, Country)
+SELECT SupplierName, City, Country FROM Suppliers
+WHERE Country='Germany';
+#+END_SRC
+
+* NULL Funcs
+#+BEGIN_SRC sql
+SELECT ProductName, UnitPrice * (UnitsInStock + IFNULL(UnitsOnOrder, 0))
+FROM Products
+# OR 
+SELECT ProductName, UnitPrice * (UnitsInStock + COALESCE(UnitsOnOrder, 0))
+FROM Products
+#+END_SRC
+
+* Stored Procedure
+#+BEGIN_QUOTE
+A stored procedure is a prepared SQL code that you can save, so the code can be reused over and over again.
+#+END_QUOTE
+Syntax
+#+BEGIN_SRC sql
+CREATE PROCEDURE procedure_name
+AS
+sql_statement
+GO;
+#+END_SRC
+
+Execute a stored procedure
+#+BEGIN_SRC sql
+EXEC procedure_name;
+#+END_SRC
+
+Stored procedure example
+#+BEGIN_SRC sql
+CREATE PROCEDURE SelectAllCustomers
+AS
+SELECT * FROM Customers
+GO;
+#+END_SRC
+
+Execute example
+#+BEGIN_SRC sql
+EXEC SelectAllCustomers;
+#+END_SRC
+
+stored procedure with one parameter
+#+BEGIN_SRC sql
+CREATE PROCEDURE SelectAllCustomers @City nvarchar(30)
+AS
+SELECT * FROM Customers WHERE City = @City
+GO;
+#+END_SRC
+
+Execute the stored procedure above as follows:
+#+BEGIN_SRC sql
+EXEC SelectAllCustomers City = "London";
+#+END_SRC
+
+stored procedure with multiple parameter
+#+BEGIN_SRC sql
+CREATE PROCEDURE SelectAllCustomers @City nvarchar(30), @PostalCode nvarchar(10)
+AS
+SELECT * FROM Customers WHERE City = @City AND PostalCode = @PostalCode
+GO;
+#+END_SRC
+
+Execute the stored procedure above as follows:
+#+BEGIN_SRC sql
+EXEC SelectAllCustomers City = "London", PostalCode = 'WA1 1DP';
+#+END_SRC
+
+* Comments
+single line
+#+BEGIN_SRC sql
+-- select all
+#+END_SRC
+
+mutli line
+#+BEGIN_SRC sql
+/*Select all the columns
+of all the records
+in the Customers table:*/
+SELECT * FROM Customers;
+#+END_SRC
+
