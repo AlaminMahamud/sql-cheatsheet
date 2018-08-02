@@ -663,3 +663,38 @@ GROUP BY   LastName
 HAVING     COUNT(Orders.OrderID) > 25;
 #+END_SRC
 
+** EXISTS Syntax
+#+BEGIN_QUOTE
+The Exists operator is used to test for the existence of any record in a subquery. returns true if subquery returns one or more records.
+#+END_QUOTE
+
+Syntax
+#+BEGIN_SRC sql
+SELECT column_name(s)
+FROM table_name
+WHERE EXISTS
+(SELECT column_name FROM table_name WHERE condition);
+#+END_SRC
+
+Example
+#+BEGIN_SRC sql
+SELECT       SupplierName
+FROM         Suppliers
+WHERE EXISTS (
+              SELECT ProductName
+	      FROM   Products
+	      WHERE  SupplierId = Suppliers.SupplierID
+	      AND    Price < 20
+             );
+#+END_SRC
+
+#+BEGIN_SRC sql
+SELECT       SupplierName
+FROM         Suppliers
+WHERE EXISTS (
+              SELECT ProductName
+	      FROM   Products
+	      WHERE  SupplierId = Suppliers.SupplierID
+	      AND    Price=22
+             );
+#+END_SRC
